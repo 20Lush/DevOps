@@ -1,0 +1,3 @@
+[submodule "cpp-executable-template"]
+	path = cpp-executable-template
+	url = git@github.com:20Lush/cpp-executable-template.git
