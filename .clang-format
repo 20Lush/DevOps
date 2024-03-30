@@ -90,8 +90,6 @@ BreakConstructorInitializersBeforeComma: false
 BreakConstructorInitializers: BeforeColon
 BreakAfterJavaFieldAnnotations: false
 BreakStringLiterals: true
-# Describe the regular expression of the comment with special meaning, it should not be divided into multiple lines or changed in other ways
-CommentPragmas:'^ IWYU pragma:'
 # The initialization list of the constructor is either all on the same line or on their own line
 ConstructorInitializerAllOnOneLineOrOnePerLine: true
 # The comfort list of constructors all wrap
@@ -110,24 +108,6 @@ DisableFormat: false
 ExperimentalAutoDetectBinPacking: false
 # Fix namespace comment
 FixNamespaceComments: true
-# Need to be interpreted as a foreach loop instead of a function call macro
-ForEachMacros:
- -foreach
- -Q_FOREACH
- -BOOST_FOREACH
-# Sort #include, #include that matches a regular expression has a corresponding priority, and the default priority is INT_MAX (the smaller the priority, the higher the priority),
-# You can define a negative priority to ensure that certain #include is always at the top
-IncludeCategories:
- -Regex:'^<ext/.*\.h>'
-   Priority: 2
- -Regex:'^<.*\.h>'
-   Priority: 1
- -Regex:'^<.*'
-   Priority: 2
- -Regex:'.*'
-   Priority: 3
-
-IncludeIsMainRegex:'([-_](test|unittest))?$'
 # Indent case label
 IndentCaseLabels: true
 # Indentation width
@@ -139,13 +119,13 @@ JavaScriptWrapImports: true
 # Keep the blank line at the beginning of the block
 KeepEmptyLinesAtTheStartOfBlocks: true
 # The regular expression of a macro to start a block
-MacroBlockBegin:''
+MacroBlockBegin: ''
 # End the regular expression of a block macro
-MacroBlockEnd:''
+MacroBlockEnd: ''
 # Maximum number of consecutive blank lines
 MaxEmptyLinesToKeep: 1
 # Namespace indentation: None, Inner (indent the content in the nested namespace), All
-NamespaceIndentation: Inner
+NamespaceIndentation: All
 # Indent width when using ObjC block
 ObjCBlockIndentWidth: 4
 # Add a space before ObjC's protocol list
@@ -164,34 +144,6 @@ PenaltyExcessCharacter: 1000000
 PenaltyReturnTypeOnItsOwnLine: 60
 # Alignment of pointer and reference: Left, Right, Middle
 PointerAlignment: Left
-RawStringFormats:
- -Language: Cpp
-   Delimiters:
-     -cc
-     -CC
-     -cpp
-     -Cpp
-     -CPP
-     -'c++'
-     -'C++'
-   CanonicalDelimiter:''
-   BasedOnStyle: google
- -Language: TextProto
-   Delimiters:
-     -pb
-     -PB
-     -proto
-     -PROTO
-   EnclosingFunctions:
-     -EqualsProto
-     -EquivToProto
-     -PARSE_PARTIAL_TEXT_PROTO
-     -PARSE_TEST_PROTO
-     -PARSE_TEXT_PROTO
-     -ParseTextOrDie
-     -ParseTextProtoOrDie
-   CanonicalDelimiter:''
-   BasedOnStyle: google
 # Allow retypesetting comments
 ReflowComments: true
 # Allow sorting#include
@@ -227,4 +179,4 @@ Standard: Cpp11
 # tab width
 TabWidth: 4
 # Use tab characters: Never, ForIndentation, ForContinuationAndIndentation, Always
-UseTab: Never
+UseTab: ForIndentation
